@@ -1,9 +1,11 @@
 package com.watchapi.model;
 
+import java.io.Serializable;
+
 //import javax.persistence.Entity;
 
 //@Entity
-public class Hero {
+public class Hero implements Serializable {
 
 	private int id;
 	private String name;
@@ -17,7 +19,7 @@ public class Hero {
 	private String affiliation;
 	private String base_of_operations;
 	private int difficulty;
-	private String heroURL;
+	private String url;
 	public int getId() {
 		return id;
 	}
@@ -90,10 +92,10 @@ public class Hero {
 	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
 	}
-	public String getHeroURL() {
-		return heroURL;
+	public String getUrl() {
+		return url;
 	}
-	public void setHeroURL(String heroURL) {
-		this.heroURL = heroURL;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

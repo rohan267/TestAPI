@@ -1,0 +1,40 @@
+body {
+	//background-color: gray;
+}
+
+#heroByIdDiv td {
+	width: auto;
+	border: 1px;
+	border-color: gray;
+	border-width: 1px;
+}
+
+#abilityByIdDiv td {
+	width: auto;
+	border: 1px;
+	border-color: gray;
+	border-width: 1px;
+}
+
+.inptTextCls {
+	width: 100px;
+}
+
+.headerTableCls {
+		margin-top: 20px;
+		margin-left: 20px;
+		border-collapse: collapse;
+	    border: 1px solid gray;
+	    text-align: center;
+	    padding: 15px;
+}
+
+.headerTableCls td {
+		border-collapse: collapse;
+	    border: 1px solid gray;
+	    padding: 10px;
+}
+
+.inptTextLargeCls {
+	width:120px;
+}

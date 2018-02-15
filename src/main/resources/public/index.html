@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<title>Spring Boot + JPA + Datatables</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+	<script src="/js/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="/css/watchAPI.css">
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="/js/jquery.DataTables.js"></script>
+	<script src="/js/watchAPI.js"></script>
+</head>
+
+<body>
+
+<!-- 	<div id="tryDiv" style="background-color: white; border: 1; border-style: solid; border-color: black; height:600px"> -->
+	
+<!-- 	</div> -->
+	<div id="masterDiv">
+	<table class="headerTableCls">
+	<tr>
+		<td>
+			<label>Get Hero List</label><br>
+			<input type="button" id="herosList" value="Get Heros List" onclick="renderHerosListTable()"/>
+		</td>
+		<td >
+			<label>Search Hero by ID</label><br>
+			<input type="text" id="heroId" maxlength="3" class="inptTextCls" placeholder="Hero ID">
+			<input type="button" value="Get Hero By ID" onclick="getHeroById()"/>
+		</td>
+		
+		<td>
+			<label>Get Ability List</label><br>
+			<input type="button" id="abilityList" value="Get Ability List" onclick="renderAbilityList()"/>
+		</td>
+		
+		<td>
+			<label>Search Ability by ID</label><br>
+			<input type="text" id="abilityId" maxlength="3" class="inptTextCls" placeholder="Ability ID">
+			<input type="button" id="abilityById" value="Get Ability By ID" onclick="renderAbilityById()"/>
+		</td>
+		
+<!-- 		<td> -->
+<!-- 			<label>Search By Hero and Ability ID</label><br> -->
+<!-- 			<input type="text" id="heroComboId" maxlength="3" class="inptTextLargeCls" placeholder="Hero ID"> -->
+<!-- 			<input type="text" id="abilityComboId" maxlength="3" class="inptTextLargeCls" placeholder="Ability ID"> -->
+<!-- 			<input type="button" id="heroAblityComboBtn" value="Get" onclick="renderHeroAbilityById()"/> -->
+<!-- 		</td> -->
+	</tr>
+	
+	</table>
+	
+	<!-- List Heros -->
+	<div id="herosListTableDiv">
+<!-- 	<h1>Heros Table</h1> -->
+		<table id="herosTable" class="display">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Health</th>
+				<th>Armour</th>
+				<th>Shield</th>
+				<th>Real Name</th>
+				<th>Age</th>
+				<th>Height</th>
+				<th>Affiliation</th>
+				<th>Base Of Operations</th>
+				<th>Difficulty</th>
+				<th>URL</th>
+			</tr>
+		</thead>
+	    </table>
+    </div>
+    
+    <!-- Get Hero by Id -->
+    <div id="heroByIdDiv" style="display: none">
+	    <table id="byId" class="display">
+	        <tbody>
+	        	<tr>
+	        		<td>Id: </td>
+	        		<td><div id="heroId"></div></td>
+	        	</tr>
+	        	<tr>
+	        		<td>Name: </td>
+	        		<td><div id="heroName"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>Description: </td>
+	        		<td><div id="heroDescription"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>Health: </td>
+	        		<td><div id="heroHealth"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>Armour</td>
+	        		<td><div id="heroArmour"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>shield: </td>
+	        		<td><div id="heroShield"></div></td>
+	        	</tr>
+        	 	<tr>
+	        		<td>Real Name: </td>
+	        		<td><div id="heroRealName"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>Age: </td>
+	        		<td><div id="heroAge"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>Height: </td>
+	        		<td><div id="heroHeight"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>Affiliation: </td>
+	        		<td><div id="heroAffiliation"></div></td>
+	        	</tr>
+	        	 <tr>
+	        		<td>Base Of Operations: </td>
+	        		<td><div id="heroBaseOperation"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>Difficulty: </td>
+	        		<td><div id="heroDifficulty"></div></td>
+	        	</tr>
+        	 	<tr>
+	        		<td>Url: </td>
+	        		<td><div id="heroUrl"></div></td>
+	        	</tr>
+	        </tbody>
+	    </table>
+    </div>
+    
+    
+    <!-- List Abilities -->
+    <!-- List Heros -->
+	<div id="abilitiesListTableDiv">
+<!-- 	<h1>Heros Table</h1> -->
+		<table id="abilitiesTable" class="display">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Is Ultimate</th>
+				<th>URL</th>
+				<th>Hero Id</th>
+			</tr>
+		</thead>	
+	    </table>
+    </div>
+    
+    
+    <div id="abilityByIdDiv" style="display: none">
+	    <table id="byId" class="display">
+	        <tbody>
+	        	<tr>
+	        		<td>Id: </td>
+	        		<td><div id="abilityId"></div></td>
+	        	</tr>
+	        	<tr>
+	        		<td>Name: </td>
+	        		<td><div id="abilityName"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>Description: </td>
+	        		<td><div id="abilityDescription"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>Is Ultimate: </td>
+	        		<td><div id="abilityIsUltimate"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>URL</td>
+	        		<td><div id="abilityUrl"></div></td>
+	        	</tr>
+	        	 	<tr>
+	        		<td>Hero ID: </td>
+	        		<td><div id="abilityheroId"></div></td>
+	        	</tr>
+        </tbody>
+	    </table>
+    </div>
+    </div>
+</body>
+</html>

@@ -27,9 +27,9 @@ https://overwatch-api.net/api/v1/ability/{ability_id}
  */
 public interface HeroDAO {
 
-	public List<String> getHerosList();
+	public List<Hero> getHerosList();
 	
 	public Hero getHero(int id);
 	
-	public void addHeros();
+	public boolean addHeros();
 }
